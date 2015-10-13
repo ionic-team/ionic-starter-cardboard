@@ -1,1 +1,9 @@
-/* Empty. Add your own CSS if you like */
+#frame {
+  width: 100%;
+  height: 100%;
+}
+#frame .row {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+}
