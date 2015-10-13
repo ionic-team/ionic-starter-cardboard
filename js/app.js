@@ -28,20 +28,60 @@ angular.module('starter', ['ionic'])
 .controller('AppCtrl', ['$scope', function($scope) {
   var self = this;
 
-  this.getTransition = function() {
+  var lastMagneticHeading = 0;
+
+  function compass(heading) {
+    var data = angular.extend({
+      alpha: heading.magneticHeading,
+      magneticHeading: heading.webkitCompassHeading || heading.alpha
+    }, heading);
+
+    var pictureWidth = self.imageWidth;
+    //var rest = data.magneticHeading - lastMagneticHeading;
+
+    //if (rest >= 6 || rest <= -6) {
+      var picturePosition = Math.abs(Math.round(pictureWidth / 360 * data.magneticHeading));
+
+      self.picturePosition = picturePosition;
+
+      lastMagneticHeading = data.magneticHeading;
+    //}
+
+    $scope.$apply();
   }
+
+  function compassErr(err) {
+    console.error('Unable to get compass heading', err);
+  }
+
+  if(!navigator.compass) {
+    window.addEventListener('deviceorientation', compass);
+  } else {
+    navigator.compass.watchHeading(compass, compassErr, { frequency: 50 });
+  }
+
+  this.getTransition = function() {
+    if(this.picturePosition <= 50 && this.picturePosition >= 0 || this.picturePosition <= this.imageWidth && this.picturePosition >= (this.imageWidth - 50)) {
+      return "none";
+    } else {
+      return "0.9s linear";
+    }
+  };
 
   this.getPanStyle = function() {
 
     var image = new Image();
 
     image.onload = function () {
-      this.imageWidth = image.width;
+      self.imageWidth = image.width;
     };
 
     image.src = "img/panorama.jpg";
 
+    console.log('bgPosition', this.picturePosition);
+
     return {
+      width: '100%',
       height: window.innerHeight + "px",
       backgroundPosition: "-" + this.picturePosition + 'px 490px',
       backgroundImage: "url(" + image.src + ")",
