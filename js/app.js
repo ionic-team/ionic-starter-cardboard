@@ -81,7 +81,6 @@ angular.module('starter', ['ionic'])
     console.log('bgPosition', this.picturePosition);
 
     return {
-      width: '100%',
       height: window.innerHeight + "px",
       backgroundPosition: "-" + this.picturePosition + 'px 490px',
       backgroundImage: "url(" + image.src + ")",

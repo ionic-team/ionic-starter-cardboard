@@ -11,3 +11,6 @@
 #frame .row .col {
   padding: 0;
 }
+#frame img {
+  width: 100%;
+}
