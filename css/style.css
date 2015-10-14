@@ -14,3 +14,9 @@
 #frame img {
   width: 100%;
 }
+
+#glframe {
+  background: black;
+  width: 100%;
+  height: 100%;
+}
