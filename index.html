@@ -24,39 +24,39 @@
     <script src="js/lib/DeviceOrientationControls.js"></script>
     <script src="js/lib/OrbitControls.js"></script>
     <script src="js/lib/helvetiker_regular.typeface.js"></script>
-    
+
     <script src="https://timezonedb.googlecode.com/files/timezonedb.js" type="text/javascript"></script>
 
     <script src="js/app.js"></script>
   </head>
-  <body ng-app="starter" ng-controller="App2Ctrl as app">
+  <body ng-app="starter" ng-controller="AppCtrl as app">
     <ion-pane>
       <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Cardboard</h1>
+        <h1 class="title">Cardboard</h1>
+        <div class="buttons">
+          <button class="button button-clear" ng-click="openSettings()"><i class="icon ion-gear-a"></i></button>
+        </div>
       </ion-header-bar>
       <ion-content scroll="false" padding="false">
-        <div id="glframe">
-        </div>
+        <cardboard-gl></cardboard-gl>
       </ion-content>
     </ion-pane>
-    <!--
-    <ion-pane>
-      <ion-header-bar class="bar-stable">
-        <h1 class="title">Ionic Cardboard</h1>
-      </ion-header-bar>
-      <ion-content scroll="false" padding="false">
-        <div id="frame">
-          <div class="row">
-            <div class="col col-50" style="height: 100%;">
-              <img ng-style="app.getPanStyle()">
-            </div>
-            <div class="col col-50" style="blue; height: 100%">
-              <img ng-style="app.getPanStyle()">
-            </div>
+
+
+    <script id="settings.html" type="text/ng-template">
+      <ion-modal-view>
+        <ion-header-bar>
+          <h1 class="title">Settings</h1>
+          <div class="buttons">
+            <button class="button button-clear" ng-click="closeSettings()">Done</button>
           </div>
-        </div>
-      </ion-content>
-    </ion-pane>
-    -->
+        </ion-header-bar>
+        <ion-content>
+          <form>
+            <ion-toggle ng-model="data.enableAwesome" toggle-class="toggle-assertive">Enable Awesome?</ion-toggle>
+          </form>
+        </ion-content>
+      </ion-modal-view>
+    </script>
   </body>
 </html>
