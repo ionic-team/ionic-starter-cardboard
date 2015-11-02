@@ -1,6 +1,6 @@
 ## Ionic Cardboard
 
-Use Ionic, Three.js and WebGL to build a Google Cardboard app. To get started, install the ionic and cordova CLI tools:
+Use Ionic, Three.js and WebGL to build a Google Cardboard app as part of the [Angular Cardboard Hackathon](https://angular.io/cardboard/). To get started, install the ionic and cordova CLI tools:
 
 ```bash
 $ sudo npm install -g ionic cordova
