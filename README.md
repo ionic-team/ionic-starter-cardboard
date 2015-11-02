@@ -1,18 +1,16 @@
-This is an addon starter template for the [Ionic Framework](http://ionicframework.com/).
+## Ionic Cardboard
 
-## How to use this template
-
-*This template does not work on its own*. It is missing the Ionic library, and AngularJS.
-
-To use this, either create a new ionic project using the ionic node.js utility, or copy and paste this into an existing Cordova project and download a release of Ionic separately.
-
-### With the Ionic tool:
-
-Take the name after `ionic-starter-`, and that is the name of the template to be used when using the `ionic start` command below:
+Use Ionic, Three.js and WebGL to build a Google Cardboard app. To get started, install the ionic and cordova CLI tools:
 
 ```bash
 $ sudo npm install -g ionic cordova
 $ ionic start myApp cardboard
+```
+
+Next, we should modify the `config.xml` file to force the app to be in landscape mode. Add this line anywhere inside of `<widget>`:
+
+```xml
+  <preference name="orientation" value="landscape" />
 ```
 
 Then, to run it, cd into `myApp` and run:
